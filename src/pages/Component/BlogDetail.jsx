@@ -1,6 +1,4 @@
-﻿
-
-import { useEffect, useMemo } from "react";
+﻿import { useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { ShareIcon } from "@heroicons/react/24/outline";
@@ -97,15 +95,17 @@ const BlogDetail = () => {
     <article className="min-h-screen bg-gray-50 pt-8 pb-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Image */}
-        <div className="relative rounded-3xl overflow-hidden mb-10 shadow-2xl">
+        <div className="relative mb-10 overflow-hidden rounded-3xl shadow-2xl">
           {heroImage ? (
-            <img
-              src={heroImage}
-              alt={post.name}
-              className="w-full h-[28rem] sm:h-[32rem] object-cover"
-            />
+            <div className="w-full overflow-hidden bg-slate-100">
+              <img
+                src={heroImage}
+                alt={post.name}
+                className="h-[220px] w-full object-cover sm:h-[28rem] md:h-[32rem]"
+              />
+            </div>
           ) : (
-            <div className="w-full h-96 bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center">
+            <div className="flex h-72 w-full items-center justify-center bg-gradient-to-br from-indigo-100 to-purple-100 sm:h-96">
               <span className="text-6xl text-indigo-300">📷</span>
             </div>
           )}
