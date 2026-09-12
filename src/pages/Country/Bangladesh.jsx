@@ -292,7 +292,7 @@ const Bangladesh = () => {
 
               {
                 name: "MH Samorita Medical College and Hospital",
-                img: "https://mhsmc.com/images/2021-03-10.jpg",
+                img: "../../../src/assets/mhsmc.jpg",
               },
             ].map((uni, i) => (
               <div
