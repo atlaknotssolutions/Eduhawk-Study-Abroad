@@ -73,6 +73,7 @@ const Blog = () => {
 
   // State for accordion (which FAQ is open)
   const [openFaq, setOpenFaq] = useState(null);
+  const isInitialLoading = status === "loading" && products.length === 0;
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -83,36 +84,6 @@ const Blog = () => {
       dispatch(fetchProducts());
     }
   }, [status, dispatch]);
-
-  if (status === "loading") {
-    return (
-      <section className="min-h-screen bg-gray-50 flex items-center justify-center py-16 md:py-24">
-        <div className="flex items-center gap-4 text-xl md:text-2xl font-medium text-gray-600">
-          <svg
-            className="h-10 w-10 text-indigo-600 animate-spin"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              className="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="4"
-            />
-            <path
-              className="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-            />
-          </svg>
-          <span>Waiting for products...</span>
-        </div>
-      </section>
-    );
-  }
 
   if (status === "failed") {
     return (
@@ -212,7 +183,36 @@ const Blog = () => {
           </div>
 
           {/* Products Grid + Pagination */}
-          {products.length > 0 ? (
+          {isInitialLoading ? (
+            <div className="mb-16">
+              <div className="mb-6 flex items-center justify-center gap-3 text-sm font-medium text-indigo-700">
+                <span className="inline-flex h-3 w-3 rounded-full bg-indigo-500 animate-pulse" />
+                Loading latest articles...
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <div
+                    key={index}
+                    className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)] animate-pulse"
+                  >
+                    <div className="h-52 bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200" />
+                    <div className="space-y-4 p-5">
+                      <div className="h-3 w-24 rounded-full bg-slate-200" />
+                      <div className="h-5 w-4/5 rounded-full bg-slate-200" />
+                      <div className="h-4 w-1/3 rounded-full bg-slate-200" />
+                      <div className="space-y-2 pt-2">
+                        <div className="h-3 w-full rounded-full bg-slate-200" />
+                        <div className="h-3 w-5/6 rounded-full bg-slate-200" />
+                        <div className="h-3 w-2/3 rounded-full bg-slate-200" />
+                      </div>
+                      <div className="h-4 w-28 rounded-full bg-slate-200" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : products.length > 0 ? (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mb-16">
                 {products.map((product) => (
