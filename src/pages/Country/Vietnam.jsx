@@ -377,26 +377,60 @@ const Vietnam = () => {
           </div>
 
           {/* Food & Accommodation */}
-          <div className="bg-gradient-to-b from-gray-50 to-white py-16 mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 text-center mb-10">
-              Food & Accommodation Costs
-            </h2>
-            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed container mx-auto px-4 max-w-6xl">
-              <p>
-                Hostels are affordable, safe, and student-oriented (shared 2–3
-                per room, furnished, Wi-Fi, kitchen).
+          <div className="mb-20 rounded-[32px] border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-6 md:p-10 shadow-xl shadow-blue-100/60">
+            <div className="mb-8 text-center">
+              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-blue-700">
+                Living Expenses
               </p>
-              <ul className="list-disc pl-6 mt-4 space-y-2">
-                <li>Monthly hostel: ₹8,000–₹20,000</li>
-                <li>Food (self-cook + mess): ₹8,000–₹15,000</li>
-                <li>Misc (transport etc.): ₹4,000–₹8,000</li>
-                <li>
-                  <strong>Total monthly:</strong> ~₹20,000–₹45,000
-                </li>
-              </ul>
-              <p className="mt-6">
-                Indian food widely available; many hostels have Indian mess
-                options.
+              <h2 className="text-3xl md:text-4xl font-bold text-blue-900">
+                Food & Accommodation Costs
+              </h2>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-4">
+              {[
+                {
+                  label: "Hostel",
+                  value: "₹8,000–₹20,000",
+                  detail: "Shared rooms, Wi‑Fi, kitchen, safe student housing",
+                },
+                {
+                  label: "Food",
+                  value: "₹8,000–₹15,000",
+                  detail: "Mess + self-cooking with affordable daily options",
+                },
+                {
+                  label: "Misc. Expenses",
+                  value: "₹4,000–₹8,000",
+                  detail: "Transport, stationery, personal essentials",
+                },
+                {
+                  label: "Total Monthly",
+                  value: "₹20,000–₹45,000",
+                  detail: "A realistic budget for a comfortable student life",
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <p className="text-sm font-semibold uppercase tracking-wide text-blue-600 mb-3">
+                    {item.label}
+                  </p>
+                  <p className="text-2xl md:text-3xl font-bold text-blue-900 mb-3">
+                    {item.value}
+                  </p>
+                  <p className="text-sm leading-relaxed text-gray-600">
+                    {item.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-dashed border-blue-200 bg-blue-50/60 p-5 text-center">
+              <p className="text-lg font-medium text-gray-700">
+                Indian food is widely available, and many hostels provide
+                convenient Indian mess or grocery access for students.
               </p>
             </div>
           </div>
