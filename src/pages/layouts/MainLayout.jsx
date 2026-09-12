@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../../component/Navbar";
 import Footer from "../Footer";
-import { ArrowUp } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 
 const MainLayout = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -39,10 +39,8 @@ const MainLayout = () => {
         
         {/* WhatsApp Button with Blinking Border */}
         <div className="relative">
-          {/* Blinking Ring / Border */}
           <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-60"></span>
           
-          {/* Actual Button */}
           <button
             onClick={openWhatsApp}
             className="relative w-14 h-14 bg-[#25D366] hover:bg-[#20ba5c] text-white rounded-full shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
@@ -59,14 +57,14 @@ const MainLayout = () => {
           </button>
         </div>
 
-        {/* Scroll to Top Button */}
+        {/* Scroll to Top Button - Clean & Professional */}
         {showScrollTop && (
           <button
             onClick={scrollToTop}
             className="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
             title="Scroll to Top"
           >
-            <ArrowUp size={28} strokeWidth={3.5} />
+            <ChevronUp size={26} strokeWidth={2.8} />
           </button>
         )}
       </div>
