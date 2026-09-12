@@ -213,7 +213,7 @@ export default function Footer() {
                 AI Knots IT Solution Pvt. Ltd.
               </span>
             </a>
-            <a className="font-small text-gray-400">version 3.0.0 </a>Trusted
+            <a className="font-small text-gray-400">version 5.0.0 </a>Trusted
             by 2000+ Indian Students
           </p>
 

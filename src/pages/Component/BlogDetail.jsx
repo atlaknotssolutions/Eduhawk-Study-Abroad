@@ -19,6 +19,8 @@ const BlogDetail = () => {
   const error = useSelector((state) => state.products.error);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
     if (slugOrId) {
       dispatch(fetchProductBySlugOrId(slugOrId));
     }

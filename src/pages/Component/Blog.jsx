@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
   fetchProducts,
@@ -57,6 +57,7 @@ const getShortDescription = (html) => {
 
 const Blog = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     items: products,
@@ -248,54 +249,73 @@ const Blog = () => {
           ) : products.length > 0 ? (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mb-16">
-                {products.map((product) => (
-                  <article
-                    key={product._id || product.id}
-                    className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col h-full group"
-                  >
-                    {product.images?.[0] && (
-                      <div className="overflow-hidden h-52">
-                        <img
-                          src={product.images[0]}
-                          alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
+                {products.map((product) => {
+                  const articleLink = `/blog/${product?.slug || product?._id}`;
+
+                  return (
+                    <article
+                      key={product._id || product.id}
+                      onClick={() => navigate(articleLink)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          navigate(articleLink);
+                        }
+                      }}
+                      tabIndex={0}
+                      role="button"
+                      className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+                    >
+                      {product.images?.[0] && (
+                        <div className="overflow-hidden h-52">
+                          <img
+                            src={product.images[0]}
+                            alt={product.name}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                      )}
+
+                      <div className="p-5 flex flex-col flex-1">
+                        {product.category?.name && (
+                          <span className="text-xs font-semibold text-indigo-600 uppercase tracking-wide mb-2">
+                            {product.category.name}
+                          </span>
+                        )}
+
+                        <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                          {product.name}
+                        </h3>
+
+                        {product.author && (
+                          <p className="text-sm text-gray-500 mb-3">
+                            By{" "}
+                            <span className="font-medium">
+                              {product.author}
+                            </span>
+                          </p>
+                        )}
+
+                        {product.description && (
+                          <p className="text-sm text-gray-600 line-clamp-3 mb-4 flex-1">
+                            {getShortDescription(product.description)}
+                          </p>
+                        )}
+
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(articleLink);
+                          }}
+                          className="mt-auto inline-flex w-fit items-center text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition"
+                        >
+                          Read more →
+                        </button>
                       </div>
-                    )}
-
-                    <div className="p-5 flex flex-col flex-1">
-                      {product.category?.name && (
-                        <span className="text-xs font-semibold text-indigo-600 uppercase tracking-wide mb-2">
-                          {product.category.name}
-                        </span>
-                      )}
-
-                      <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
-                        {product.name}
-                      </h3>
-
-                      {product.author && (
-                        <p className="text-sm text-gray-500 mb-3">
-                          By{" "}
-                          <span className="font-medium">{product.author}</span>
-                        </p>
-                      )}
-
-                      {product.description && (
-                        <p className="text-sm text-gray-600 line-clamp-3 mb-4 flex-1">
-                          {getShortDescription(product.description)}
-                        </p>
-                      )}
-
-                      <Link
-                        to={`/blog/${product?.slug || product?._id}`}
-                        className="mt-auto inline-block text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition"
-                      >
-                        Read more →
-                      </Link>
-                    </div>
-                  </article>
-                ))}
+                    </article>
+                  );
+                })}
               </div>
 
               {/* Pagination */}
