@@ -95,25 +95,25 @@ const BlogDetail = () => {
 
   return (
     <article className="min-h-screen bg-gray-50 pt-8 pb-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero Image */}
-        <div className="relative mb-10 overflow-hidden rounded-3xl shadow-2xl">
+      {/* Hero Image - full width */}
+      <div className="relative mx-auto mb-10 max-w-6xl overflow-hidden rounded-3xl px-4 shadow-2xl sm:px-6">
+        <div className="w-full overflow-hidden bg-slate-100">
           {heroImage ? (
-            <div className="w-full overflow-hidden bg-slate-100">
-              <img
-                src={heroImage}
-                alt={post.name}
-                className="h-[220px] w-full object-cover sm:h-[28rem] md:h-[32rem]"
-              />
-            </div>
+            <img
+              src={heroImage}
+              alt={post.name}
+              className="h-[240px] w-full object-cover sm:h-[440px] md:h-[520px] lg:h-[620px]"
+            />
           ) : (
             <div className="flex h-72 w-full items-center justify-center bg-gradient-to-br from-indigo-100 to-purple-100 sm:h-96">
               <span className="text-6xl text-indigo-300">📷</span>
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+      </div>
 
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Category Badge */}
         <span className="inline-block bg-indigo-600 text-white text-sm font-medium px-5 py-2 rounded-full mb-4">
           {categoryName}
