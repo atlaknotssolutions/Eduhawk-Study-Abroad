@@ -13,7 +13,7 @@ import charges from "../assets/charges.png";
 import Kathmandu from "../../src/Images/Kathmandu.jpg";
 import Eduhawk from "../assets/Eduhawk.png"; // ← adjust path if needed
 import { useNavigate } from "react-router-dom";
-import { X } from "lucide-react";
+import { X, ChevronDown } from "lucide-react";
 
 import univercity from "../Images/university-image/singapore.jpg";
 import topRanking1 from "../Images/Peking University Health Science Center.jpg";
@@ -77,6 +77,16 @@ const FAQ_ITEMS = [
     question: "Is MBBS abroad a good option for Indian students?",
     answer:
       "Yes, many Indian students choose foreign medical universities for quality medical education, internationally recognized programs, and cost-effective study options in lakhs.",
+  },
+  {
+    question: "Do I need to clear NEET for studying MBBS abroad?",
+    answer:
+      "Yes, NEET qualification is mandatory for Indian students who wish to pursue MBBS abroad and later practice medicine in India after clearing the FMGE/NExT exam.",
+  },
+  {
+    question: "What is the total cost of studying MBBS abroad?",
+    answer:
+      "The total cost usually ranges between ₹15–40 lakhs for the complete course, depending on the country and university. This includes tuition fees, hostel, and living expenses.",
   },
 ];
 
@@ -200,6 +210,7 @@ export default function HeroSection() {
   const [contactErrors, setContactErrors] = useState({});
   const [isContactSubmitting, setIsContactSubmitting] = useState(false);
   const [exploreMenuOpen, setExploreMenuOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState(0);
   const exploreMenuRef = useRef(null);
   const navigate = useNavigate();
   // Toast Notification Functions
@@ -406,9 +417,7 @@ export default function HeroSection() {
   return (
     <>
       <Helmet>
-        <title>
-          MBBS Abroad Guidance | Indian Students Admission 2026
-        </title>
+        <title>MBBS Abroad Guidance | Indian Students Admission 2026</title>
         <meta
           name="description"
           content="Study MBBS abroad with expert guidance, affordable fees, and trusted admission support in Russia, Georgia, Uzbekistan, Kazakhstan & Kyrgyzstan."
@@ -524,11 +533,15 @@ export default function HeroSection() {
                           name="name"
                           placeholder="Enter your full name"
                           value={modalForm.name}
-                          onChange={(e) => updateModalField("name", e.target.value)}
+                          onChange={(e) =>
+                            updateModalField("name", e.target.value)
+                          }
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200/40 outline-none transition bg-gray-50"
                         />
                         {modalErrors.name && (
-                          <p className="mt-1 text-sm text-red-500">{modalErrors.name}</p>
+                          <p className="mt-1 text-sm text-red-500">
+                            {modalErrors.name}
+                          </p>
                         )}
                       </div>
                       <div>
@@ -540,11 +553,15 @@ export default function HeroSection() {
                           name="email"
                           placeholder="your.email@gmail.com"
                           value={modalForm.email}
-                          onChange={(e) => updateModalField("email", e.target.value)}
+                          onChange={(e) =>
+                            updateModalField("email", e.target.value)
+                          }
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200/40 outline-none transition bg-gray-50"
                         />
                         {modalErrors.email && (
-                          <p className="mt-1 text-sm text-red-500">{modalErrors.email}</p>
+                          <p className="mt-1 text-sm text-red-500">
+                            {modalErrors.email}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -558,11 +575,15 @@ export default function HeroSection() {
                         name="phone"
                         placeholder="+91 9630736070"
                         value={modalForm.phone}
-                        onChange={(e) => updateModalField("phone", e.target.value)}
+                        onChange={(e) =>
+                          updateModalField("phone", e.target.value)
+                        }
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200/40 outline-none transition bg-gray-50"
                       />
                       {modalErrors.phone && (
-                        <p className="mt-1 text-sm text-red-500">{modalErrors.phone}</p>
+                        <p className="mt-1 text-sm text-red-500">
+                          {modalErrors.phone}
+                        </p>
                       )}
                     </div>
 
@@ -573,7 +594,9 @@ export default function HeroSection() {
                       <select
                         name="city"
                         value={modalForm.city}
-                        onChange={(e) => updateModalField("city", e.target.value)}
+                        onChange={(e) =>
+                          updateModalField("city", e.target.value)
+                        }
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200/40 outline-none bg-gray-50"
                       >
                         <option value="" disabled>
@@ -591,7 +614,9 @@ export default function HeroSection() {
                         ))}
                       </select>
                       {modalErrors.city && (
-                        <p className="mt-1 text-sm text-red-500">{modalErrors.city}</p>
+                        <p className="mt-1 text-sm text-red-500">
+                          {modalErrors.city}
+                        </p>
                       )}
                     </div>
 
@@ -602,7 +627,9 @@ export default function HeroSection() {
                       <select
                         name="neetStatus"
                         value={modalForm.neetStatus}
-                        onChange={(e) => updateModalField("neetStatus", e.target.value)}
+                        onChange={(e) =>
+                          updateModalField("neetStatus", e.target.value)
+                        }
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200/40 outline-none bg-gray-50"
                       >
                         <option value="" disabled>
@@ -623,7 +650,9 @@ export default function HeroSection() {
                       <select
                         name="country"
                         value={modalForm.country}
-                        onChange={(e) => updateModalField("country", e.target.value)}
+                        onChange={(e) =>
+                          updateModalField("country", e.target.value)
+                        }
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200/40 outline-none bg-gray-50"
                       >
                         <option value="" disabled>
@@ -643,7 +672,9 @@ export default function HeroSection() {
                         ))}
                       </select>
                       {modalErrors.country && (
-                        <p className="mt-1 text-sm text-red-500">{modalErrors.country}</p>
+                        <p className="mt-1 text-sm text-red-500">
+                          {modalErrors.country}
+                        </p>
                       )}
                     </div>
 
@@ -1293,65 +1324,98 @@ export default function HeroSection() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                <h3 className="text-xl font-semibold text-[#0a2342] mb-3">
-                  MBBS Admission Abroad
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Get support for MBBS admission abroad with eligibility
-                  guidance, university shortlisting, and application assistance.
-                </p>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                <h3 className="text-xl font-semibold text-[#0a2342] mb-3">
-                  Medical Education Overseas
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Explore medical education opportunities in foreign medical
-                  universities with recognized programs and strong academic
-                  support.
-                </p>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                <h3 className="text-xl font-semibold text-[#0a2342] mb-3">
-                  Overseas Education for Indian Students
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  We simplify overseas education for Indian students with
-                  guidance on country selection, fees, and admission processes.
-                </p>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                <h3 className="text-xl font-semibold text-[#0a2342] mb-3">
-                  Affordable Study in Lakhs
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Compare cost-effective MBBS options in lakhs and choose the
-                  right path for your budget and career goals.
-                </p>
-              </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  title: "MBBS Admission Abroad",
+                  desc: "Get support for MBBS admission abroad with eligibility guidance, university shortlisting, and application assistance.",
+                },
+                {
+                  title: "Medical Education Overseas",
+                  desc: "Explore medical education opportunities in foreign medical universities with recognized programs and strong academic support.",
+                },
+                {
+                  title: "Overseas Education for Indian Students",
+                  desc: "We simplify overseas education for Indian students with guidance on country selection, fees, and admission processes.",
+                },
+                {
+                  title: "Affordable Study in Lakhs",
+                  desc: "Compare cost-effective MBBS options in lakhs and choose the right path for your budget and career goals.",
+                },
+              ].map((card, index) => (
+                <div
+                  key={index}
+                  className="group bg-white rounded-2xl p-6 shadow-sm border border-gray-200 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:border-[#d4a853]/50"
+                >
+                  <div className="mb-4 h-11 w-11 rounded-xl bg-gradient-to-br from-[#d4a853]/20 to-[#f0c070]/20 flex items-center justify-center text-xl shadow-inner">
+                    {index + 1}
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#0a2342] mb-3">
+                    {card.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {card.desc}
+                  </p>
+                </div>
+              ))}
             </div>
+          </div>
+        </section>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8">
-              <h3 className="text-2xl font-bold text-[#0a2342] mb-6">
+        <section className="py-16 md:py-20 px-5 sm:px-8 lg:px-12 bg-white">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-8 text-center">
+              <p className="text-[#d4a853] uppercase tracking-widest text-xs md:text-sm font-medium mb-3">
+                FAQs
+              </p>
+              <h3 className="text-3xl sm:text-4xl font-bold text-[#0a2342]">
                 FAQs About MBBS Abroad and Study Guidance
               </h3>
-              <div className="space-y-4">
-                {FAQ_ITEMS.map((item, index) => (
+            </div>
+
+            <div className="space-y-4">
+              {FAQ_ITEMS.map((item, index) => {
+                const isOpen = openFaq === index;
+
+                return (
                   <div
                     key={index}
-                    className="border border-gray-200 rounded-xl p-4"
+                    className="border border-gray-200 rounded-2xl overflow-hidden bg-[#f8fafc] shadow-sm transition-all duration-300 hover:shadow-md"
                   >
-                    <h4 className="font-semibold text-[#0a2342] mb-2">
-                      {item.question}
-                    </h4>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {item.answer}
-                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaq(isOpen ? -1 : index)}
+                      aria-expanded={isOpen}
+                      className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left transition-all duration-300 hover:bg-white"
+                    >
+                      <h4 className="font-semibold text-[#0a2342] text-base md:text-lg pr-4">
+                        {item.question}
+                      </h4>
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#0a2342] shadow-sm border border-gray-200 transition-all duration-300">
+                        <ChevronDown
+                          className={`h-5 w-5 transition-transform duration-300 ${
+                            isOpen ? "rotate-180" : "rotate-0"
+                          }`}
+                        />
+                      </span>
+                    </button>
+
+                    <div
+                      className={`grid transition-all duration-300 ease-in-out ${
+                        isOpen
+                          ? "grid-rows-[1fr] opacity-100"
+                          : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+                          {item.answer}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -1384,10 +1448,14 @@ export default function HeroSection() {
                       className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#d4a853] focus:ring-2 focus:ring-[#d4a853]/30 bg-gray-50 transition"
                       placeholder="John Doe"
                       value={contactForm.name}
-                      onChange={(e) => updateContactField("name", e.target.value)}
+                      onChange={(e) =>
+                        updateContactField("name", e.target.value)
+                      }
                     />
                     {contactErrors.name && (
-                      <p className="mt-1 text-sm text-red-500">{contactErrors.name}</p>
+                      <p className="mt-1 text-sm text-red-500">
+                        {contactErrors.name}
+                      </p>
                     )}
                   </div>
                   <div>
@@ -1399,10 +1467,14 @@ export default function HeroSection() {
                       className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#d4a853] focus:ring-2 focus:ring-[#d4a853]/30 bg-gray-50 transition"
                       placeholder="you@email.com"
                       value={contactForm.email}
-                      onChange={(e) => updateContactField("email", e.target.value)}
+                      onChange={(e) =>
+                        updateContactField("email", e.target.value)
+                      }
                     />
                     {contactErrors.email && (
-                      <p className="mt-1 text-sm text-red-500">{contactErrors.email}</p>
+                      <p className="mt-1 text-sm text-red-500">
+                        {contactErrors.email}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -1416,10 +1488,14 @@ export default function HeroSection() {
                       className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#d4a853] focus:ring-2 focus:ring-[#d4a853]/30 bg-gray-50 transition"
                       placeholder="+91 00000 00000"
                       value={contactForm.phone}
-                      onChange={(e) => updateContactField("phone", e.target.value)}
+                      onChange={(e) =>
+                        updateContactField("phone", e.target.value)
+                      }
                     />
                     {contactErrors.phone && (
-                      <p className="mt-1 text-sm text-red-500">{contactErrors.phone}</p>
+                      <p className="mt-1 text-sm text-red-500">
+                        {contactErrors.phone}
+                      </p>
                     )}
                   </div>
 
@@ -1431,7 +1507,9 @@ export default function HeroSection() {
                     <select
                       className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#d4a853] focus:ring-2 focus:ring-[#d4a853]/30 bg-gray-50 transition"
                       value={contactForm.country}
-                      onChange={(e) => updateContactField("country", e.target.value)}
+                      onChange={(e) =>
+                        updateContactField("country", e.target.value)
+                      }
                     >
                       <option value="">Select country</option>
                       {COUNTRIES.map((c) => (
@@ -1441,7 +1519,9 @@ export default function HeroSection() {
                       ))}
                     </select>
                     {contactErrors.country && (
-                      <p className="mt-1 text-sm text-red-500">{contactErrors.country}</p>
+                      <p className="mt-1 text-sm text-red-500">
+                        {contactErrors.country}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -1455,7 +1535,9 @@ export default function HeroSection() {
                     <select
                       className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#d4a853] focus:ring-2 focus:ring-[#d4a853]/30 bg-gray-50 transition"
                       value={contactForm.city || ""}
-                      onChange={(e) => updateContactField("city", e.target.value)}
+                      onChange={(e) =>
+                        updateContactField("city", e.target.value)
+                      }
                     >
                       <option value="">Select city</option>
                       <option value="Delhi">Delhi</option>
@@ -1473,7 +1555,9 @@ export default function HeroSection() {
                       <option value="Other">Other</option>
                     </select>
                     {contactErrors.city && (
-                      <p className="mt-1 text-sm text-red-500">{contactErrors.city}</p>
+                      <p className="mt-1 text-sm text-red-500">
+                        {contactErrors.city}
+                      </p>
                     )}
                   </div>
 
@@ -1484,14 +1568,18 @@ export default function HeroSection() {
                     <select
                       className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#d4a853] focus:ring-2 focus:ring-[#d4a853]/30 bg-gray-50 transition"
                       value={contactForm.neetStatus}
-                      onChange={(e) => updateContactField("neetStatus", e.target.value)}
+                      onChange={(e) =>
+                        updateContactField("neetStatus", e.target.value)
+                      }
                     >
                       <option value="">Select NEET status</option>
                       <option value="Qualified">Qualified</option>
                       <option value="Not Qualified">Not Qualified</option>
                     </select>
                     {contactErrors.neetStatus && (
-                      <p className="mt-1 text-sm text-red-500">{contactErrors.neetStatus}</p>
+                      <p className="mt-1 text-sm text-red-500">
+                        {contactErrors.neetStatus}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -1506,13 +1594,17 @@ export default function HeroSection() {
                     className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#d4a853] focus:ring-2 focus:ring-[#d4a853]/30 bg-gray-50 transition resize-y"
                     placeholder="Tell us about your academic profile, budget, and any queries..."
                     value={contactForm.message}
-                    onChange={(e) => updateContactField("message", e.target.value)}
+                    onChange={(e) =>
+                      updateContactField("message", e.target.value)
+                    }
                   />
                   <p className="mt-1 text-sm text-gray-500">
                     Minimum 10 characters ({contactForm.message.length}/10)
                   </p>
                   {contactErrors.message && (
-                    <p className="mt-1 text-sm text-red-500">{contactErrors.message}</p>
+                    <p className="mt-1 text-sm text-red-500">
+                      {contactErrors.message}
+                    </p>
                   )}
                 </div>
 
