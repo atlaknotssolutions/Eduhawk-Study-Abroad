@@ -73,6 +73,7 @@ const Blog = () => {
 
   // State for accordion (which FAQ is open)
   const [openFaq, setOpenFaq] = useState(null);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const isInitialLoading = status === "loading" && products.length === 0;
 
   const toggleFaq = (index) => {
@@ -84,6 +85,25 @@ const Blog = () => {
       dispatch(fetchProducts());
     }
   }, [status, dispatch]);
+
+  useEffect(() => {
+    if (status === "loading") {
+      setLoadingProgress(12);
+
+      const interval = setInterval(() => {
+        setLoadingProgress((prev) => {
+          if (prev >= 92) return prev;
+          return Math.min(prev + Math.random() * 18 + 8, 92);
+        });
+      }, 500);
+
+      return () => clearInterval(interval);
+    }
+
+    if (status === "succeeded" || status === "failed") {
+      setLoadingProgress(100);
+    }
+  }, [status]);
 
   if (status === "failed") {
     return (
@@ -185,9 +205,22 @@ const Blog = () => {
           {/* Products Grid + Pagination */}
           {isInitialLoading ? (
             <div className="mb-16">
-              <div className="mb-6 flex items-center justify-center gap-3 text-sm font-medium text-indigo-700">
-                <span className="inline-flex h-3 w-3 rounded-full bg-indigo-500 animate-pulse" />
-                Loading latest articles...
+              <div className="mx-auto mb-6 w-full max-w-md">
+                <div className="mb-2 flex items-center justify-between gap-3 text-sm font-medium text-indigo-700">
+                  <span className="inline-flex items-center gap-2 truncate">
+                    <span className="inline-flex h-2.5 w-2.5 rounded-full bg-indigo-500 animate-pulse" />
+                    <span className="truncate">Loading latest articles...</span>
+                  </span>
+                  <span className="shrink-0">
+                    {Math.round(loadingProgress)}%
+                  </span>
+                </div>
+                <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-200">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 transition-all duration-500 ease-out"
+                    style={{ width: `${loadingProgress}%` }}
+                  />
+                </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
