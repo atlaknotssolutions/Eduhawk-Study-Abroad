@@ -448,8 +448,12 @@ export default function HeroSection() {
                 {/* LEFT – benefits panel */}
                 <div className="lg:w-5/12 bg-gradient-to-br from-[#0a2342] via-[#1a4a7a] to-[#0d3460] text-white p-8 sm:p-10 flex flex-col justify-between hidden lg:flex">
                   <div>
-                    <div className="text-4xl mb-6">
-                      <img src={Eduhawk} alt="MBBS Abroad" />
+                    <div className="mb-6 rounded-2xl border border-white/10 bg-white/10 p-4 shadow-inner backdrop-blur-sm">
+                      <img
+                        src={Eduhawk}
+                        alt="MBBS Abroad"
+                        className="mx-auto h-16 w-auto object-contain brightness-110 drop-shadow-[0_0_10px_rgba(255,255,255,0.18)]"
+                      />
                     </div>
                     <h2 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight">
                       Your MBBS Abroad Journey Starts Here
