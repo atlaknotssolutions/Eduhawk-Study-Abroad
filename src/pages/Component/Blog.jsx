@@ -175,7 +175,7 @@ const Blog = () => {
           {/* Header */}
           <div className="text-center mb-10 md:mb-14">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Latest Products / Articles
+              Latest Blogs & Articles on MBBS Abroad
             </h2>
             <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
               Discover our latest collection – filter by category or search
@@ -351,25 +351,30 @@ const Blog = () => {
             </div>
           )}
 
-          <section
-            className="relative h-80 bg-cover bg-center md:h-96 overflow-hidden animate-fade-in-up"
-            style={{
-              backgroundImage: "url('https://readymadeui.com/team-image.webp')",
-            }}
-          >
-            {/* Light Overlay - Ab background light rahega */}
-            <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/40 to-blue-900/30" />
+          <section className="relative mb-16 overflow-hidden rounded-[30px] border border-white/20 shadow-[0_20px_60px_rgba(15,23,42,0.12)] animate-fade-in-up">
+            <div className="absolute inset-0">
+              <img
+                src="../../src/assets/BannerCTA.jpg"
+                alt="MBBS Abroad counselling banner"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/55 to-blue-900/30" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.35),transparent_60%)]" />
+            </div>
 
-            <div className="relative z-10 flex h-full flex-col items-center justify-center px-5 text-center text-gray-900">
-              <h3 className="text-3xl font-bold sm:text-4xl md:text-5xl animate-fade-in-up delay-100 tracking-tight">
+            <div className="relative z-10 flex min-h-[320px] flex-col items-center justify-center px-5 py-14 text-center text-gray-900 sm:min-h-[360px] md:min-h-[420px]">
+              <span className="mb-4 inline-flex rounded-full border border-indigo-200 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 backdrop-blur-sm">
+                Free Consultation
+              </span>
+
+              <h3 className="max-w-3xl text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
                 Start Your Global Journey Today
               </h3>
 
-              <p className="mt-4 max-w-2xl text-lg sm:text-xl animate-fade-in-up delay-300 text-gray-700">
+              <p className="mt-4 max-w-2xl text-base text-slate-700 sm:text-lg md:text-xl">
                 Free profile evaluation • No-obligation consultation
               </p>
 
-              {/* WhatsApp Button */}
               <button
                 onClick={() =>
                   window.open(
@@ -377,14 +382,11 @@ const Blog = () => {
                     "_blank",
                   )
                 }
-                className="mt-8 rounded-full bg-[#25D366] px-10 py-4 text-lg font-semibold text-white shadow-lg flex items-center gap-3 transition-all duration-300 hover:bg-[#20ba5c] hover:shadow-xl hover:scale-105 active:scale-95"
+                className="mt-8 inline-flex items-center justify-center rounded-full bg-[#25D366] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-[#20ba5c] hover:shadow-xl active:scale-95 sm:px-10 sm:text-lg"
               >
                 Talk to an Expert →
               </button>
             </div>
-
-            {/* Subtle Background Animation */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#ffffff_0%,transparent_70%)] opacity-40 animate-pulse" />
           </section>
 
           {/* FAQ Accordion Section */}
